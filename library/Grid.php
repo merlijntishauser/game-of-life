@@ -30,6 +30,22 @@ class Grid
     }
 
     /**
+     * @return integer
+     */
+    public function getWidth()
+    {
+        return $this->width;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getHeight()
+    {
+        return $this->height;
+    }
+
+    /**
      * @param integer $x
      * @param integer $y
      */
@@ -72,5 +88,26 @@ class Grid
             }
         }
         return $amount;
+    }
+
+    /**
+     * @param Grid $grid
+     * @return boolean
+     */
+    public function equals(Grid $grid)
+    {
+        if (($this->width != $grid->getWidth()) || ($this->height != $grid->getHeight())) {
+            return false;
+        }
+
+        for ($x = 0; $x < $this->width; $x ++) {
+            for ($y = 0; $y < $this->height; $y ++) {
+                if ($this->isAlive($x, $y) !== $grid->isAlive($x, $y)) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 }
