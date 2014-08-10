@@ -47,4 +47,30 @@ class Grid
     {
         return $this->grid[$x][$y];
     }
+
+    /**
+     * @param integer $x
+     * @param integer $y
+     * @return integer
+     */
+    public function getAmountOfLivingNeighbours($cellX, $cellY)
+    {
+        $startColumn = max($cellX - 1, 0);
+        $endColumn = min($cellX + 1, $this->width - 1);
+        $startRow = max($cellY - 1, 0);
+        $endRow = min($cellY + 1, $this->height - 1);
+
+        $amount = 0;
+        for($x = $startColumn; $x <= $endColumn; $x++) {
+            for($y = $startRow; $y <= $endRow; $y++) {
+                if (($x == $cellX) && $y == $cellY) {
+                    continue;
+                }
+                if ($this->isAlive($x, $y)) {
+                    $amount ++;
+                }
+            }
+        }
+        return $amount;
+    }
 }

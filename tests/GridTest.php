@@ -20,4 +20,16 @@ class GridTest extends \PHPUnit_Framework_TestCase {
         $grid->setAlive(0, 0);
         $this->assertTrue($grid->isAlive(0, 0));
     }
+
+    /**
+     * @test
+     */
+    public function gridCanCalculateTheAmountOfLivingNeighboursOfCells()
+    {
+        $grid = new Grid(3, 3);
+        $grid->setAlive(0, 0);
+        $grid->setAlive(0, 1);
+        $grid->setAlive(0, 2);
+        $this->assertEquals(3, $grid->getAmountOfLivingNeighbours(1, 1));
+    }
 }
