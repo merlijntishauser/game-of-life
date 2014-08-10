@@ -37,4 +37,22 @@ class CellTest extends \PHPUnit_Framework_TestCase {
         $cell = new Cell(false, 2);
         $this->assertFalse($cell->willLive());
     }
+
+    /**
+     * @test
+     */
+    public function cellsStayAliveWhenHavingThreeNeighbours()
+    {
+        $cell = new Cell(true, 3);
+        $this->assertTrue($cell->willLive());
+    }
+
+    /**
+     * @test
+     */
+    public function cellsBecomeAliveWhenHavingThreeNeighbours()
+    {
+        $cell = new Cell(false, 3);
+        $this->assertTrue($cell->willLive());
+    }
 }
