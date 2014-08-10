@@ -26,6 +26,7 @@ class Cell
     public function willLive()
     {
         return !($this->amountOfLivingNeighbours < 2)
-            && !($this->amountOfLivingNeighbours > 3);
+            && !($this->amountOfLivingNeighbours > 3)
+            && !(!$this->isAlive && $this->amountOfLivingNeighbours == 2);
     }
 }
