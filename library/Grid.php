@@ -32,6 +32,15 @@ class Grid
     /**
      * @param integer $x
      * @param integer $y
+     */
+    public function setAlive($x, $y)
+    {
+        $this->grid[$x][$y] = true;
+    }
+
+    /**
+     * @param integer $x
+     * @param integer $y
      * @return boolean
      */
     public function isAlive($x, $y)
