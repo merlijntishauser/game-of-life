@@ -21,4 +21,23 @@ class Game
 
         return $resultGrid;
     }
+
+    /**
+     * @param integer $widh
+     * @param integer $height
+     * @return Grid
+     */
+    public function createRandomGrid($width, $height) {
+        $grid = new Grid($width, $height);
+
+        for ($x = 0; $x < $width; $x ++) {
+            for ($y = 0; $y < $height; $y ++) {
+                if (mt_rand(0, 1) > 0) {
+                    $grid->setAlive($x, $y);
+                }
+            }
+        }
+
+        return $grid;
+    }
 }
