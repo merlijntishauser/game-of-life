@@ -1,5 +1,6 @@
 <?php
 
+declare(ticks = 1);
 namespace GameOfLife;
 
 require_once sprintf(
@@ -8,15 +9,20 @@ require_once sprintf(
     DIRECTORY_SEPARATOR
 );
 
+$signalHandler = new SignalHandler();
+pcntl_signal(SIGINT, $signalHandler);
+
 $width = $argv[1];
 $height = $argv[2];
 
 $game = new Game();
 $grid = $game->createRandomGrid($width, $height);
-$renderer = new Renderer('✶', ' ');
+$renderer = new Renderer('█', array(' ', '░','▒', '▓', '█'));
 
-while (true) {
+while ($signalHandler->getSignal() === 0) {
     $renderer->render($grid);
     $grid = $game->createNextGrid($grid);
-    usleep(20000);
+    echo "\e[{$grid->getHeight()}A";
+    usleep(10000);
 }
+$renderer->render($grid);

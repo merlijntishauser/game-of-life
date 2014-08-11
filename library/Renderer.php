@@ -9,15 +9,15 @@ class Renderer
     private $alive;
 
     /**
-     * @var string
+     * @var array
      */
     private $dead;
 
     /**
      * @param string $alive
-     * @param string $dead
+     * @param array $dead
      */
-    public function __construct($alive = 'X', $dead = '.')
+    public function __construct($alive = 'X', array $dead = array('.'))
     {
         $this->alive = $alive;
         $this->dead = $dead;
@@ -30,10 +30,13 @@ class Renderer
     {
         for ($y = 0; $y < $grid->getHeight(); $y ++) {
             for ($x = 0; $x < $grid->getWidth(); $x ++) {
-                echo $grid->isAlive($x, $y) ? $this->alive : $this->dead;
+                $amount = $grid->getAmountOfLivingNeighbours($x, $y);
+                $deadValue = array_key_exists($amount, $this->dead)
+                    ? $this->dead[$amount]
+                    : end($this->dead);
+                echo $grid->isAlive($x, $y) ? $this->alive : $deadValue;
             }
             echo "\n";
         }
-        echo "\e[{$grid->getHeight()}A";
     }
 }
