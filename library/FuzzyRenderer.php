@@ -1,7 +1,7 @@
 <?php
 namespace GameOfLife;
 
-class FuzzyRenderer
+class FuzzyRenderer implements Renderer
 {
     /**
      * @var string
