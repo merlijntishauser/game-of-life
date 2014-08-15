@@ -17,7 +17,7 @@ $height = $argv[2];
 
 $game = new Game();
 $grid = $game->createRandomGrid($width, $height);
-$renderer = new Renderer('█', array(' ', '░','▒', '▓', '█'));
+$renderer = new Renderer('█', array(' ', '░','▒', '▓'));
 
 while ($signalHandler->getSignal() === 0) {
     $renderer->render($grid);
