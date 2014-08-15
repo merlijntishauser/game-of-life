@@ -28,7 +28,14 @@ class Cell
      */
     public function willLive()
     {
-        return $this->amountOfLivingNeighbours == 3
-            || $this->isAlive && $this->amountOfLivingNeighbours == 2;
+        if ($this->amountOfLivingNeighbours == 3) {
+            return true;
+        }
+
+        if ($this->isAlive && $this->amountOfLivingNeighbours == 2) {
+            return true;
+        }
+
+        return false;
     }
 }
