@@ -17,7 +17,7 @@ class Renderer
      * @param string $alive
      * @param array $dead
      */
-    public function __construct($alive = 'X', array $dead = array('.'))
+    public function __construct($alive = 'X', array $dead = array('+', '-'))
     {
         $this->alive = $alive;
         $this->dead = $dead;
