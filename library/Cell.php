@@ -23,6 +23,9 @@ class Cell
         $this->amountOfLivingNeighbours = $amountOfLivingNeighbours;
     }
 
+    /**
+     * @return boolean
+     */
     public function willLive()
     {
         return $this->amountOfLivingNeighbours == 3
