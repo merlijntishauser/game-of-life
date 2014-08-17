@@ -61,6 +61,18 @@ class Grid
      */
     public function isAlive($x, $y)
     {
+        if ($x < 0) {
+            return false;
+        }
+        if ($y < 0) {
+            return false;
+        }
+        if ($x >= $this->width) {
+            return false;
+        }
+        if ($y >= $this->height) {
+            return false;
+        }
         return $this->grid[$x][$y];
     }
 
