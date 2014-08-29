@@ -17,7 +17,7 @@ $height = $argv[2];
 
 $game = new Game();
 $grid = $game->createRandomGrid($width, $height);
-$renderer = new FuzzyRenderer('█', array(' ', '░','▒', '▓'));
+$renderer = new SubRenderer();
 
 ob_start();
 while ($signalHandler->getSignal() === 0) {
