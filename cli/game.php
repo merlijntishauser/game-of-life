@@ -20,11 +20,11 @@ $game = new Game();
 $grid = $game->createRandomGrid($width, $height);
 $renderer = new SubRenderer();
 
+echo "\n";
 ob_start();
 while ($signalHandler->getSignal() === 0) {
+    echo "\e[{$renderer->getHeight()}A";
     $renderer->render($grid);
     $grid = $game->createNextGrid($grid);
-    echo "\e[{$renderer->getHeight()}A";
     ob_flush();
 }
-$renderer->render($grid);
