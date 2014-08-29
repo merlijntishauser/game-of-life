@@ -1,7 +1,7 @@
 <?php
 namespace GameOfLife;
 
-class FuzzyRenderer implements Renderer
+class FuzzyRenderer extends Renderer
 {
     /**
      * @var string
@@ -14,19 +14,14 @@ class FuzzyRenderer implements Renderer
     private $dead;
 
     /**
-     * @var integer
-     */
-    private $height;
-
-    /**
      * @param string $alive
      * @param array $dead
      */
     public function __construct($alive = 'X', array $dead = array('-', '+'))
     {
+        parent::__construct();
         $this->alive = $alive;
         $this->dead = $dead;
-        $this->height = 0;
     }
 
     /**
@@ -34,7 +29,7 @@ class FuzzyRenderer implements Renderer
      */
     public function render(Grid $grid)
     {
-        $this->height = $grid->getHeight();
+        $this->setHeight($grid->getHeight());
         for ($y = 0; $y < $grid->getHeight(); $y ++) {
             for ($x = 0; $x < $grid->getWidth(); $x ++) {
                 $amount = $grid->getAmountOfLivingNeighbours($x, $y);
@@ -45,13 +40,5 @@ class FuzzyRenderer implements Renderer
             }
             echo "\n";
         }
-    }
-
-    /**
-     * @return integer
-     */
-    public function getHeight()
-    {
-        return $this->height;
     }
 }
