@@ -22,6 +22,34 @@ class GridTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
+     * @return array
+     */
+    public function cellsOutsideOfGrid()
+    {
+        return array(
+            array(-1, -1),
+            array( 0, -1),
+            array( 1, -1),
+            array(-1,  0),
+            array( 1,  0),
+            array(-1,  1),
+            array( 0,  1),
+            array( 1,  1)
+        );
+    }
+
+    /**
+     * @test
+     * @dataProvider cellsOutsideOfGrid
+     */
+    public function cellsOutsideOfGridAreNeverAlive($x, $y)
+    {
+        $grid = new Grid(1, 1);
+        $grid->setAlive($x, $y);
+        $this->assertFalse($grid->isAlive($x, $y));
+    }
+
+    /**
      * @test
      */
     public function gridCanCalculateTheAmountOfLivingNeighboursOfCells()
