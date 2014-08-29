@@ -19,10 +19,11 @@ $game = new Game();
 $grid = $game->createRandomGrid($width, $height);
 $renderer = new FuzzyRenderer('█', array(' ', '░','▒', '▓'));
 
+ob_start();
 while ($signalHandler->getSignal() === 0) {
     $renderer->render($grid);
     $grid = $game->createNextGrid($grid);
     echo "\e[{$grid->getHeight()}A";
-    usleep(10000);
+    ob_flush();
 }
 $renderer->render($grid);
