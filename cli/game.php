@@ -23,7 +23,7 @@ ob_start();
 while ($signalHandler->getSignal() === 0) {
     $renderer->render($grid);
     $grid = $game->createNextGrid($grid);
-    echo "\e[{$grid->getHeight()}A";
+    echo "\e[{$renderer->getHeight()}A";
     ob_flush();
 }
 $renderer->render($grid);
