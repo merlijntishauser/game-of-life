@@ -74,24 +74,4 @@ class GridTest extends \PHPUnit_Framework_TestCase {
 
         $this->assertTrue($grid->equals($otherGrid));
     }
-
-    /**
-     * @test
-     */
-    public function cellsOutsideOfGridAreAlwaysDead()
-    {
-        $grid = new Grid(1,1);
-
-	$grid->setAlive(0, -1);
-        $this->assertFalse($grid->isAlive(0, -1), 'Cells above the grid should not be alive');
-
-	$grid->setAlive(0, 1);
-	$this->assertFalse($grid->isAlive(0, 1), 'Cells below the grid should not be alive');
-
-	$grid->setAlive(-1, 0);
-	$this->assertFalse($grid->isAlive(-1, 0), 'Cells on the left of the grid should not be alive');
-
-	$grid->setAlive(1, 0);
-        $this->assertFalse($grid->isAlive(1, 0), 'Cells on the right of the grid should not be alive');
-    }
 }
