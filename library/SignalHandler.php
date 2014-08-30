@@ -19,9 +19,6 @@ class SignalHandler
     public function __invoke($signal)
     {
         $this->signal = $signal;
-        if ($signal == SIGINT) {
-            echo "\e[2D";
-        }
     }
 
     /**
