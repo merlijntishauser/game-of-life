@@ -7,8 +7,8 @@ class RuleTest extends \PHPUnit_Framework_TestCase {
      */
     public function cellsDieWhenHavingLessThanTwoNeighbours()
     {
-        $cell = new Rule(true, 1);
-        $this->assertFalse($cell->willLive());
+        $rule = new Rule(true, 1);
+        $this->assertFalse($rule->cellStaysAlive());
     }
 
     /**
@@ -16,8 +16,8 @@ class RuleTest extends \PHPUnit_Framework_TestCase {
      */
     public function cellsDieWhenHavingMoreThanThreeNeighbours()
     {
-        $cell = new Rule(true, 4);
-        $this->assertFalse($cell->willLive());
+        $rule = new Rule(true, 4);
+        $this->assertFalse($rule->cellStaysAlive());
     }
 
     /**
@@ -25,8 +25,8 @@ class RuleTest extends \PHPUnit_Framework_TestCase {
      */
     public function cellsStayAliveWhenHavingTwoNeighbours()
     {
-        $cell = new Rule(true, 2);
-        $this->assertTrue($cell->willLive());
+        $rule = new Rule(true, 2);
+        $this->assertTrue($rule->cellStaysAlive());
     }
 
     /**
@@ -34,8 +34,8 @@ class RuleTest extends \PHPUnit_Framework_TestCase {
      */
     public function cellsStayDeadWhenHavingTwoNeighbours()
     {
-        $cell = new Rule(false, 2);
-        $this->assertFalse($cell->willLive());
+        $rule = new Rule(false, 2);
+        $this->assertFalse($rule->cellStaysAlive());
     }
 
     /**
@@ -43,8 +43,8 @@ class RuleTest extends \PHPUnit_Framework_TestCase {
      */
     public function cellsStayAliveWhenHavingThreeNeighbours()
     {
-        $cell = new Rule(true, 3);
-        $this->assertTrue($cell->willLive());
+        $rule = new Rule(true, 3);
+        $this->assertTrue($rule->cellStaysAlive());
     }
 
     /**
@@ -52,7 +52,7 @@ class RuleTest extends \PHPUnit_Framework_TestCase {
      */
     public function cellsBecomeAliveWhenHavingThreeNeighbours()
     {
-        $cell = new Rule(false, 3);
-        $this->assertTrue($cell->willLive());
+        $rule = new Rule(false, 3);
+        $this->assertTrue($rule->cellStaysAlive());
     }
 }

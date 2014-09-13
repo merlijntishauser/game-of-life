@@ -26,7 +26,7 @@ class Rule
     /**
      * @return boolean
      */
-    public function willLive()
+    public function cellStaysAlive()
     {
         if ($this->amountOfLivingNeighbours == 3) {
             return true;

@@ -12,8 +12,8 @@ class Game
         $resultGrid = new Grid($grid->getWidth(), $grid->getHeight());
         for ($x = 0; $x < $grid->getWidth(); $x ++) {
             for ($y = 0; $y < $grid->getHeight(); $y ++) {
-                $cell = new Rule($grid->isAlive($x, $y), $grid->getAmountOfLivingNeighbours($x, $y));
-                if ($cell->willLive()) {
+                $rule = new Rule($grid->isAlive($x, $y), $grid->getAmountOfLivingNeighbours($x, $y));
+                if ($rule->cellStaysAlive()) {
                     $resultGrid->setAlive($x, $y);
                 }
             }
