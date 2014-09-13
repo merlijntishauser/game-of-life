@@ -1,13 +1,13 @@
 <?php
 namespace GameOfLife;
 
-class CellTest extends \PHPUnit_Framework_TestCase {
+class RuleTest extends \PHPUnit_Framework_TestCase {
     /**
      * @test
      */
     public function cellsDieWhenHavingLessThanTwoNeighbours()
     {
-        $cell = new Cell(true, 1);
+        $cell = new Rule(true, 1);
         $this->assertFalse($cell->willLive());
     }
 
@@ -16,7 +16,7 @@ class CellTest extends \PHPUnit_Framework_TestCase {
      */
     public function cellsDieWhenHavingMoreThanThreeNeighbours()
     {
-        $cell = new Cell(true, 4);
+        $cell = new Rule(true, 4);
         $this->assertFalse($cell->willLive());
     }
 
@@ -25,7 +25,7 @@ class CellTest extends \PHPUnit_Framework_TestCase {
      */
     public function cellsStayAliveWhenHavingTwoNeighbours()
     {
-        $cell = new Cell(true, 2);
+        $cell = new Rule(true, 2);
         $this->assertTrue($cell->willLive());
     }
 
@@ -34,7 +34,7 @@ class CellTest extends \PHPUnit_Framework_TestCase {
      */
     public function cellsStayDeadWhenHavingTwoNeighbours()
     {
-        $cell = new Cell(false, 2);
+        $cell = new Rule(false, 2);
         $this->assertFalse($cell->willLive());
     }
 
@@ -43,7 +43,7 @@ class CellTest extends \PHPUnit_Framework_TestCase {
      */
     public function cellsStayAliveWhenHavingThreeNeighbours()
     {
-        $cell = new Cell(true, 3);
+        $cell = new Rule(true, 3);
         $this->assertTrue($cell->willLive());
     }
 
@@ -52,7 +52,7 @@ class CellTest extends \PHPUnit_Framework_TestCase {
      */
     public function cellsBecomeAliveWhenHavingThreeNeighbours()
     {
-        $cell = new Cell(false, 3);
+        $cell = new Rule(false, 3);
         $this->assertTrue($cell->willLive());
     }
 }

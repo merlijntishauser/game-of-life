@@ -1,7 +1,7 @@
 <?php
 namespace GameOfLife;
 
-class Cell
+class Rule
 {
     /**
      * @var boolean
