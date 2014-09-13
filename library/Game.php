@@ -10,10 +10,10 @@ class Game
     public function createNextGrid(Grid $grid)
     {
         $resultGrid = new Grid($grid->getWidth(), $grid->getHeight());
+        $rule = new Rule();
         for ($x = 0; $x < $grid->getWidth(); $x ++) {
             for ($y = 0; $y < $grid->getHeight(); $y ++) {
-                $rule = new Rule($grid->isAlive($x, $y), $grid->getAmountOfLivingNeighbours($x, $y));
-                if ($rule->cellStaysAlive()) {
+                if ($rule->cellStaysAlive($grid->isAlive($x, $y), $grid->getAmountOfLivingNeighbours($x, $y))) {
                     $resultGrid->setAlive($x, $y);
                 }
             }
