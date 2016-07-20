@@ -1,7 +1,8 @@
 <?php
-namespace GameOfLife;
+namespace MerlijnTishauser\GameOfLife;
 
-class GameTest extends \PHPUnit_Framework_TestCase {
+class GameTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * @test
      */

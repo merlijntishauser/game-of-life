@@ -1,5 +1,5 @@
 <?php
-namespace GameOfLife;
+namespace MerlijnTishauser\GameOfLife;
 
 class Grid
 {
@@ -77,8 +77,8 @@ class Grid
     }
 
     /**
-     * @param integer $x
-     * @param integer $y
+     * @param integer $cellX
+     * @param integer $cellY
      * @return integer
      */
     public function getAmountOfLivingNeighbours($cellX, $cellY)

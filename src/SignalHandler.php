@@ -1,5 +1,5 @@
 <?php
-namespace GameOfLife;
+namespace MerlijnTishauser\GameOfLife;
 
 class SignalHandler
 {

@@ -1,5 +1,5 @@
 <?php
-namespace GameOfLife;
+namespace MerlijnTishauser\GameOfLife;
 
 class GridTest extends \PHPUnit_Framework_TestCase {
     /**

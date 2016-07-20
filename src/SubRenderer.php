@@ -1,11 +1,11 @@
 <?php
 
-namespace GameOfLife;
+namespace MerlijnTishauser\GameOfLife;
 
 
 class SubRenderer extends Renderer
 {
-    private $blocks = array(' ', '▗', '▖', '▄', '▝', '▐', '▞', '▟', '▘', '▚', '▌', '▙', '▀', '▜', '▛', '█');
+    private $blocks = array(' ', '▗', '▖', '▄', '▝', '▐', '▞', '▟', '▘', '▚', '▌', '▙', '▀', '▜', '▛', '█');
 
     /**
      * @param Grid $grid

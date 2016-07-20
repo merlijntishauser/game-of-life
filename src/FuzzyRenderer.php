@@ -1,5 +1,5 @@
 <?php
-namespace GameOfLife;
+namespace MerlijnTishauser\GameOfLife;
 
 class FuzzyRenderer extends Renderer
 {
@@ -17,7 +17,7 @@ class FuzzyRenderer extends Renderer
      * @param string $alive
      * @param array $dead
      */
-    public function __construct($alive = 'X', array $dead = array('-', '+'))
+    public function __construct($alive = 'A', array $dead = array('.', '+', 'x'))
     {
         parent::__construct();
         $this->alive = $alive;
@@ -30,15 +30,26 @@ class FuzzyRenderer extends Renderer
     public function render(Grid $grid)
     {
         $this->setHeight($grid->getHeight());
+
         for ($y = 0; $y < $grid->getHeight(); $y ++) {
             for ($x = 0; $x < $grid->getWidth(); $x ++) {
                 $amount = $grid->getAmountOfLivingNeighbours($x, $y);
-                $deadValue = array_key_exists($amount, $this->dead)
-                    ? $this->dead[$amount]
-                    : end($this->dead);
-                echo $grid->isAlive($x, $y) ? $this->alive : $deadValue;
+
+                $deadValue = end($this->dead);
+                if (array_key_exists($amount, $this->dead)) {
+                    $deadValue = "\e[38;5;67m" . $this->dead[$amount];
+                }
+
+                if ($grid->isAlive($x, $y)) {
+                    echo "\e[38;5;117m";
+                    echo $this->alive;
+                }
+                else {
+                    echo $deadValue;
+                }
             }
-            echo "\n";
+            echo "\e[0m\n";
         }
     }
 }
+

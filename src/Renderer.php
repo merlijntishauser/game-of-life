@@ -1,6 +1,6 @@
 <?php
 
-namespace GameOfLife;
+namespace MerlijnTishauser\GameOfLife;
 
 abstract class Renderer
 {

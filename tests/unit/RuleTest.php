@@ -1,5 +1,5 @@
 <?php
-namespace GameOfLife;
+namespace MerlijnTishauser\GameOfLife;
 
 class RuleTest extends \PHPUnit_Framework_TestCase {
     /**
