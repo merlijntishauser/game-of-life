@@ -2,7 +2,6 @@
 
 namespace GameOfLife;
 
-
 class SubRenderer extends Renderer
 {
     private $blocks = array(' ', '▗', '▖', '▄', '▝', '▐', '▞', '▟', '▘', '▚', '▌', '▙', '▀', '▜', '▛', '█');

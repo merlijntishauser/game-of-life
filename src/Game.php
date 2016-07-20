@@ -27,7 +27,8 @@ class Game
      * @param integer $height
      * @return Grid
      */
-    public function createRandomGrid($width, $height) {
+    public function createRandomGrid($width, $height)
+    {
         $grid = new Grid($width, $height);
 
         for ($x = 0; $x < $width; $x++) {

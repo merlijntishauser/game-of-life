@@ -43,8 +43,7 @@ class FuzzyRenderer extends Renderer
                 if ($grid->isAlive($x, $y)) {
                     echo "\e[38;5;117m";
                     echo $this->alive;
-                }
-                else {
+                } else {
                     echo $deadValue;
                 }
             }
@@ -52,4 +51,3 @@ class FuzzyRenderer extends Renderer
         }
     }
 }
-

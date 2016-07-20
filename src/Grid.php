@@ -89,8 +89,8 @@ class Grid
         $endRow = min($cellY + 1, $this->height - 1);
 
         $amount = 0;
-        for($x = $startColumn; $x <= $endColumn; $x++) {
-            for($y = $startRow; $y <= $endRow; $y++) {
+        for ($x = $startColumn; $x <= $endColumn; $x++) {
+            for ($y = $startRow; $y <= $endRow; $y++) {
                 if (($x == $cellX) && $y == $cellY) {
                     continue;
                 }
