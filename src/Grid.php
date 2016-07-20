@@ -1,5 +1,5 @@
 <?php
-namespace MerlijnTishauser\GameOfLife;
+namespace GameOfLife;
 
 class Grid
 {

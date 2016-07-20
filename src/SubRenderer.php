@@ -1,6 +1,6 @@
 <?php
 
-namespace MerlijnTishauser\GameOfLife;
+namespace GameOfLife;
 
 
 class SubRenderer extends Renderer

@@ -1,19 +1,20 @@
 {
-  "name": "merlijntishauser/GameOfLife",
-  "description": "code for the fun of it",
+  "name": "dvandam/GameOfLife",
+  "description": "cli implementation of Conway's game of life in PHP",
   "license": "MIT",
   "type": "library",
   "authors": [
+    { "name": "Danny van Dam", "email": "danny@codeprakker.nl" },
     { "name": "Merlijn Tishauser", "email": "merlijn@gargleblaster.org" }
   ],
   "autoload": {
     "psr-4": {
-      "MerlijnTishauser\\GameOfLife\\": "src/"
+      "GameOfLife\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "MerlijnTishauser\\GameOfLife\\": "tests/unit/"
+      "GameOfLife\\": "tests/unit/"
     }
   },
   "require": {
