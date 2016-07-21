@@ -6,7 +6,6 @@
          backupGlobals="false"
          colors="true"
          bootstrap="vendor/autoload.php"
-         forceCoversAnnotation="true"
 >
     <testsuites>
         <testsuite name="unit">

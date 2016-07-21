@@ -55,6 +55,37 @@ class Grid
     }
 
     /**
+     * @param integer $amount
+     */
+    public function setRandomBlobAlive($amount)
+    {
+        for ($i=0; $i < $amount; $i++) {
+            $coords = $this->getRandomPoint();
+
+            // create a living blob, not a single point
+            // and throw in some randomness
+            for ($j=0; $j < 10; $j++) {
+                $this->setAlive($coords["x"] + rand(1, 4), $coords["y"] + rand(1, 4));
+            }
+        }
+    }
+
+    /**
+     * pick a random point, avoid edges
+     *
+     * @return array x,y
+     */
+    public function getRandomPoint()
+    {
+
+        $x = rand(1, $this->getWidth()-1);
+        $y = rand(1, $this->getHeight()-1);
+
+        return array("x" => $x, "y" => $y);
+    }
+
+
+    /**
      * @param integer $x
      * @param integer $y
      * @return boolean
