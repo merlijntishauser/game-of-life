@@ -56,9 +56,12 @@ class Grid
 
     /**
      * @param integer $amount
+     * @throws \Exception
      */
     public function setRandomBlobAlive($amount)
     {
+        $this->validateAmountInput($amount);
+
         for ($i=0; $i < $amount; $i++) {
             $coords = $this->getRandomPoint();
 
@@ -149,6 +152,28 @@ class Grid
                     return false;
                 }
             }
+        }
+
+        return true;
+    }
+
+    /**
+     * @param $amount
+     * @throws \Exception
+     * @return boolean true if valid
+     */
+    public function validateAmountInput($amount)
+    {
+        if (!is_int($amount)) {
+            throw new \Exception("Amount should be an integer");
+        }
+
+        if ($amount < 0) {
+            throw new \Exception("Amount should be an positive integer");
+        }
+
+        if ($amount > (sqrt($this->height * $this->width))) {
+            throw new \Exception("Amount does not make sense in grid of this size");
         }
 
         return true;

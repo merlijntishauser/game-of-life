@@ -74,4 +74,82 @@ class GridTest extends \PHPUnit_Framework_TestCase {
 
         $this->assertTrue($grid->equals($otherGrid));
     }
+
+    /**
+     * @test
+     */
+    public function gridGetRandomPointReturnsValidArray()
+    {
+        $grid = new Grid(1,1);
+        $this->assertSame($grid->getRandomPoint(), array("x" => 1, "y" => 1));
+    }
+
+    /**
+     * @test
+     */
+    public function gridRandomBlobHasBeenMadeAlive()
+    {
+        $grid = new Grid(4,4);
+        $referenceGrid = clone $grid;
+        $grid->setRandomBlobAlive(1);
+        
+        $this->assertNotSame($referenceGrid, $grid);
+
+    }
+
+    /**
+     * @test
+     */
+    public function gridRandomBlobDoesNotAcceptInsaneInput()
+    {
+        $grid = new Grid(4,8);
+        $referenceGrid = clone $grid;
+        $this->expectException(\Exception::class);
+        $grid->setRandomBlobAlive(100);
+
+        $this->assertNotSame($referenceGrid, $grid);
+
+    }
+
+    /**
+     * @test
+     */
+    public function gridRandomBlobDoesNotAcceptNegativeInput()
+    {
+        $grid = new Grid(4,8);
+        $referenceGrid = clone $grid;
+        $this->expectException(\Exception::class);
+        $grid->setRandomBlobAlive(-100);
+
+        $this->assertNotSame($referenceGrid, $grid);
+
+    }
+
+    /**
+     * @test
+     * @dataProvider nonIntegerValues
+     */
+    public function gridRandomBlobOnlyAcceptIntegers($value)
+    {
+        $grid = new Grid(1,1);
+        $referenceGrid = clone $grid;
+        $this->expectException(\Exception::class);
+        $grid->setRandomBlobAlive($value);
+
+        $this->assertNotSame($referenceGrid, $grid);
+
+    }
+
+    /**
+     * @return array
+     */
+    public function nonIntegerValues()
+    {
+        return array(
+            array("3.456"),
+            array(3.4),
+            array("string"),
+            array(new \stdClass()),
+        );
+    }
 }
