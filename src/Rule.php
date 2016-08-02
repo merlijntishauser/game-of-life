@@ -23,7 +23,7 @@ class Rule
     /**
      * @return boolean
      */
-    public function isIsAlive()
+    public function isAlive()
     {
         return $this->isAlive;
     }
@@ -61,7 +61,7 @@ class Rule
             return true;
         }
 
-        if ($this->isIsAlive() && $this->getAmountOfLivingNeighbours() == 2) {
+        if ($this->isAlive() && $this->getAmountOfLivingNeighbours() == 2) {
             return true;
         }
 

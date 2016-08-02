@@ -30,6 +30,30 @@ class Grid
     }
 
     /**
+     * @param int $width
+     * @throws \Exception
+     */
+    public function setWidth(int $width)
+    {
+        if ($width < 0 ) {
+            throw new \Exception("width cannot be negative");
+        }
+        $this->width = $width;
+    }
+
+    /**
+     * @param int $height
+     * @throws \Exception
+     */
+    public function setHeight(int $height)
+    {
+        if ($height < 0 ) {
+            throw new \Exception("height cannot be negative");
+        }
+        $this->height = $height;
+    }
+
+    /**
      * @return integer
      */
     public function getWidth()
@@ -81,8 +105,17 @@ class Grid
     public function getRandomPoint()
     {
 
-        $x = rand(1, $this->getWidth()-1);
-        $y = rand(1, $this->getHeight()-1);
+        $minX = $this->getWidth()-1;
+        if ($minX < 1) {
+            $minX = 1;
+        }
+        $minY = $this->getHeight()-1;
+        if ($minY < 1) {
+            $minY = 1;
+        }
+
+        $x = rand(1, $minX);
+        $y = rand(1, $minY);
 
         return array("x" => $x, "y" => $y);
     }

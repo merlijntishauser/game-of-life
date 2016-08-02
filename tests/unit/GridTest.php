@@ -77,11 +77,18 @@ class GridTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @test
+     * @dataProvider setOfGridsForRandomPoints
+     * @param $x
+     * @param $y
      */
-    public function gridGetRandomPointReturnsValidArray()
+    public function gridGetRandomPointReturnsValidArray($x, $y)
     {
-        $grid = new Grid(1,1);
-        $this->assertSame($grid->getRandomPoint(), array("x" => 1, "y" => 1));
+        $grid = new Grid($x,$y);
+
+        $point = $grid->getRandomPoint();
+        $this->assertTrue($point['x'] > 0 && $point['x'] <= $x);
+        $this->assertTrue($point['y'] > 0 && $point['y'] <= $y);
+
     }
 
     /**
@@ -128,6 +135,7 @@ class GridTest extends \PHPUnit_Framework_TestCase {
     /**
      * @test
      * @dataProvider nonIntegerValues
+     * @param $value
      */
     public function gridRandomBlobOnlyAcceptIntegers($value)
     {
@@ -143,7 +151,7 @@ class GridTest extends \PHPUnit_Framework_TestCase {
     /**
      * @return array
      */
-    public function nonIntegerValues()
+    public function nonIntegerValues() : array
     {
         return array(
             array("3.456"),
@@ -152,4 +160,18 @@ class GridTest extends \PHPUnit_Framework_TestCase {
             array(new \stdClass()),
         );
     }
+
+    /**
+     * @return array
+     */
+    public function setOfGridsForRandomPoints() : array
+    {
+        return array(
+            array(1,1),
+            array(10,10),
+            array(100,100),
+            array(1000,1000)
+        );
+    }
 }
+

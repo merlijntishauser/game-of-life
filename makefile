@@ -9,7 +9,7 @@ run:
 	@php cli/game.php 64 32 1
 
 run-fuzzy:
-	php cli/game.php 64 32 0
+	@php cli/game.php 64 32 0
 
 clean:
 	rm -rf ./build
