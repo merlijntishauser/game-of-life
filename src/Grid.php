@@ -25,9 +25,9 @@ class Grid
      */
     public function __construct(int $width, int $height)
     {
-        $this->width = $width;
-        $this->height = $height;
-        $this->grid = array_fill(0, $width, array_fill(0, $height, false));
+        $this->setWidth($width);
+        $this->setHeight($height);
+        $this->grid = array_fill(0, $this->width, array_fill(0, $this->height, false));
     }
 
     /**
@@ -198,10 +198,6 @@ class Grid
      */
     public function validateAmountInput(int $amount) : bool
     {
-        if (!is_int($amount)) {
-            throw new \Exception("Amount should be an integer");
-        }
-
         if ($amount < 0) {
             throw new \Exception("Amount should be an positive integer");
         }

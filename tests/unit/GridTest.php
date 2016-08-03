@@ -23,6 +23,20 @@ class GridTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
+     * @param $width
+     * @param $height
+     * @test
+     * @dataProvider negativeGridValues
+     */
+     public function widthAndHeigthShouldBePositive($width, $height)
+     {
+         $this->expectException(\Exception::class);
+         $grid = new Grid($width, $height);
+         unset($grid);
+         
+     }
+
+    /**
      * @return array
      */
     public function cellsOutsideOfGrid()
@@ -170,6 +184,15 @@ class GridTest extends \PHPUnit_Framework_TestCase {
             array(10,10),
             array(100,100),
             array(1000,1000)
+        );
+    }
+
+    public function negativeGridValues() : array
+    {
+        return array(
+            array(-10,10),
+            array(10,-10),
+            array(-10,-10),
         );
     }
 }
