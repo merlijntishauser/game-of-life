@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace GameOfLife;
 
 class Game
@@ -7,7 +8,7 @@ class Game
      * @param Grid $grid
      * @return Grid
      */
-    public function createNextGrid(Grid $grid)
+    public function createNextGrid(Grid $grid) : Grid
     {
         $resultGrid = new Grid($grid->getWidth(), $grid->getHeight());
         for ($x = 0; $x < $grid->getWidth(); $x++) {
@@ -27,7 +28,7 @@ class Game
      * @param integer $height
      * @return Grid
      */
-    public function createRandomGrid($width, $height)
+    public function createRandomGrid(int $width, int $height) : Grid
     {
         $grid = new Grid($width, $height);
 

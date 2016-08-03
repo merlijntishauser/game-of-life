@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace GameOfLife;
 
 class GameTest extends \PHPUnit_Framework_TestCase

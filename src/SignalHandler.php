@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace GameOfLife;
 
 class SignalHandler
@@ -16,7 +17,7 @@ class SignalHandler
     /**
      * @param integer $signal
      */
-    public function __invoke($signal)
+    public function __invoke(int $signal)
     {
         $this->signal = $signal;
     }
@@ -24,7 +25,7 @@ class SignalHandler
     /**
      * @return integer
      */
-    public function getSignal()
+    public function getSignal() : int
     {
         return $this->signal;
     }

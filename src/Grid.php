@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace GameOfLife;
 
 class Grid
@@ -22,7 +23,7 @@ class Grid
      * @param integer $width
      * @param integer $height
      */
-    public function __construct($width, $height)
+    public function __construct(int $width, int $height)
     {
         $this->width = $width;
         $this->height = $height;
@@ -56,7 +57,7 @@ class Grid
     /**
      * @return integer
      */
-    public function getWidth()
+    public function getWidth() : int
     {
         return $this->width;
     }
@@ -64,7 +65,7 @@ class Grid
     /**
      * @return integer
      */
-    public function getHeight()
+    public function getHeight() : int
     {
         return $this->height;
     }
@@ -73,7 +74,7 @@ class Grid
      * @param integer $x
      * @param integer $y
      */
-    public function setAlive($x, $y)
+    public function setAlive(int $x, int $y)
     {
         $this->grid[$x][$y] = true;
     }
@@ -82,7 +83,7 @@ class Grid
      * @param integer $amount
      * @throws \Exception
      */
-    public function setRandomBlobAlive($amount)
+    public function setRandomBlobAlive(int $amount)
     {
         $this->validateAmountInput($amount);
 
@@ -102,7 +103,7 @@ class Grid
      *
      * @return array x,y
      */
-    public function getRandomPoint()
+    public function getRandomPoint() : array
     {
 
         $minX = $this->getWidth()-1;
@@ -126,7 +127,7 @@ class Grid
      * @param integer $y
      * @return boolean
      */
-    public function isAlive($x, $y)
+    public function isAlive(int $x, int $y) : bool
     {
         if ($x < 0) {
             return false;
@@ -148,7 +149,7 @@ class Grid
      * @param integer $cellY
      * @return integer
      */
-    public function getAmountOfLivingNeighbours($cellX, $cellY)
+    public function getAmountOfLivingNeighbours($cellX, $cellY) : int
     {
         $startColumn = max($cellX - 1, 0);
         $endColumn = min($cellX + 1, $this->width - 1);
@@ -173,7 +174,7 @@ class Grid
      * @param Grid $grid
      * @return boolean
      */
-    public function equals(Grid $grid)
+    public function equals(Grid $grid) : bool
     {
         if (($this->width != $grid->getWidth()) || ($this->height != $grid->getHeight())) {
             return false;
@@ -195,7 +196,7 @@ class Grid
      * @throws \Exception
      * @return boolean true if valid
      */
-    public function validateAmountInput($amount)
+    public function validateAmountInput(int $amount) : bool
     {
         if (!is_int($amount)) {
             throw new \Exception("Amount should be an integer");

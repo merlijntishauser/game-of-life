@@ -25,7 +25,7 @@ abstract class Renderer
     /**
      * @return integer
      */
-    public function getHeight()
+    public function getHeight() : int
     {
         return $this->height;
     }

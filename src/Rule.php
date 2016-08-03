@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace GameOfLife;
 
 class Rule
@@ -23,7 +24,7 @@ class Rule
     /**
      * @return boolean
      */
-    public function isAlive()
+    public function isAlive() : bool
     {
         return $this->isAlive;
     }
@@ -31,7 +32,7 @@ class Rule
     /**
      * @param boolean $isAlive
      */
-    public function setIsAlive($isAlive)
+    public function setIsAlive(bool $isAlive)
     {
         $this->isAlive = $isAlive;
     }
@@ -39,7 +40,7 @@ class Rule
     /**
      * @return int
      */
-    public function getAmountOfLivingNeighbours()
+    public function getAmountOfLivingNeighbours() : int
     {
         return $this->amountOfLivingNeighbours;
     }
@@ -47,7 +48,7 @@ class Rule
     /**
      * @param int $amountOfLivingNeighbours
      */
-    public function setAmountOfLivingNeighbours($amountOfLivingNeighbours)
+    public function setAmountOfLivingNeighbours(int $amountOfLivingNeighbours)
     {
         $this->amountOfLivingNeighbours = $amountOfLivingNeighbours;
     }
@@ -55,7 +56,7 @@ class Rule
     /**
      * @return boolean
      */
-    public function cellStaysAlive()
+    public function cellStaysAlive() : bool
     {
         if ($this->getAmountOfLivingNeighbours() == 3) {
             return true;

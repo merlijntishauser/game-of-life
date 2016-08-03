@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace GameOfLife;
 
 class GridTest extends \PHPUnit_Framework_TestCase {
@@ -99,7 +100,7 @@ class GridTest extends \PHPUnit_Framework_TestCase {
         $grid = new Grid(4,4);
         $referenceGrid = clone $grid;
         $grid->setRandomBlobAlive(1);
-        
+
         $this->assertNotSame($referenceGrid, $grid);
 
     }
@@ -141,7 +142,7 @@ class GridTest extends \PHPUnit_Framework_TestCase {
     {
         $grid = new Grid(1,1);
         $referenceGrid = clone $grid;
-        $this->expectException(\Exception::class);
+        $this->expectException(\TypeError::class);
         $grid->setRandomBlobAlive($value);
 
         $this->assertNotSame($referenceGrid, $grid);
@@ -154,8 +155,6 @@ class GridTest extends \PHPUnit_Framework_TestCase {
     public function nonIntegerValues() : array
     {
         return array(
-            array("3.456"),
-            array(3.4),
             array("string"),
             array(new \stdClass()),
         );
