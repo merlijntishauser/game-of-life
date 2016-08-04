@@ -2,23 +2,46 @@
 declare(strict_types=1);
 namespace GameOfLife;
 
+use phpmock\phpunit\PHPMock;
+
+
 class GameTest extends \PHPUnit_Framework_TestCase
 {
+    use PHPMock;
+
     /**
-     * We assume random is really random and the chance of generating a
-     * identical grid is < 0.00000001
-     *
      * @test
      */
     public function randomGridIsCreated()
     {
-        $referenceGrid = new Grid(300, 300);
+        $rand = $this->getFunctionMock(__NAMESPACE__, "mt_rand");
+        $rand->expects($this->atLeastOnce())->willReturn(1);
+        
+        $referenceGrid = new Game();
+        $referenceGrid = $referenceGrid->createRandomGrid(3, 3);
 
-        $game = new Game();
-        $randomGrid = $game->createRandomGrid(300, 300);
-        $this->assertFalse($referenceGrid->equals($randomGrid));
+        $randomGrid = new Game();
+        $randomGrid = $randomGrid->createRandomGrid(3, 3);
+
+        $this->assertTrue($referenceGrid->equals($randomGrid));
     }
 
+    /**
+     * @test
+     */
+    public function randomGridIsCreatedWithRandISAllZeros()
+    {
+        $rand = $this->getFunctionMock(__NAMESPACE__, "mt_rand");
+        $rand->expects($this->atLeastOnce())->willReturn(0);
+
+        $referenceGrid = new Game();
+        $referenceGrid = $referenceGrid->createRandomGrid(3, 3);
+
+        $randomGrid = new Game();
+        $randomGrid = $randomGrid->createRandomGrid(3, 3);
+
+        $this->assertTrue($referenceGrid->equals($randomGrid));
+    }
 
     /**
      * @test
