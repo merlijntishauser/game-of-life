@@ -11,6 +11,7 @@ class GameTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @runInSeparateProcess
      */
     public function randomGridIsCreated()
     {
@@ -28,6 +29,7 @@ class GameTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @runInSeparateProcess
      */
     public function randomGridIsCreatedWithRandISAllZeros()
     {
