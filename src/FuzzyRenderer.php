@@ -18,7 +18,7 @@ class FuzzyRenderer extends Renderer
      * @param string $alive
      * @param array $dead
      */
-    public function __construct($alive = 'A', array $dead = array('.', '+', 'x'))
+    public function __construct(string $alive = 'A', array $dead = ['.', '+', 'x'])
     {
         parent::__construct();
         $this->alive = $alive;

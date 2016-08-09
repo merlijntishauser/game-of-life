@@ -1,6 +1,5 @@
 #!/usr/bin/env php
 <?php
-
 declare(ticks = 1);
 namespace GameOfLife;
 
@@ -17,7 +16,7 @@ pcntl_signal(SIGINT, $signalHandler);
 $term = `stty -g`;
 
 system("stty -icanon");
-stream_set_blocking(STDIN, FALSE);
+stream_set_blocking(STDIN, false);
 
 $width = $argv[1];
 $height = $argv[2];
@@ -27,10 +26,9 @@ if (array_key_exists(3, $argv)) {
     $fuzzy = $argv[3];
 }
 
-
 $game = new Game();
 $grid = $game->createRandomGrid($width, $height);
-$renderer = new SubRenderer(); 
+$renderer = new SubRenderer();
 if ($fuzzy) {
     $renderer = new FuzzyRenderer();
 }
@@ -42,7 +40,7 @@ while ($signalHandler->getSignal() === 0) {
     sleep(0.01);
     $grid = $game->createNextGrid($grid);
 
-    $input = fread(STDIN,1);
+    $input = fread(STDIN, 1);
 
     switch ($input) {
         case "l":

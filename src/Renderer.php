@@ -17,7 +17,7 @@ abstract class Renderer
     /**
      * @param integer $height
      */
-    protected function setHeight($height)
+    protected function setHeight(int $height)
     {
         $this->height = $height;
     }

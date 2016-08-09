@@ -36,7 +36,7 @@ class Grid
      */
     public function setWidth(int $width)
     {
-        if ($width < 0 ) {
+        if ($width < 0) {
             throw new \Exception("width cannot be negative");
         }
         $this->width = $width;
@@ -48,7 +48,7 @@ class Grid
      */
     public function setHeight(int $height)
     {
-        if ($height < 0 ) {
+        if ($height < 0) {
             throw new \Exception("height cannot be negative");
         }
         $this->height = $height;
@@ -71,12 +71,12 @@ class Grid
     }
 
     /**
-     * @param integer $x
-     * @param integer $y
+     * @param integer $xPosition
+     * @param integer $yPosition
      */
-    public function setAlive(int $x, int $y)
+    public function setAlive(int $xPosition, int $yPosition)
     {
-        $this->grid[$x][$y] = true;
+        $this->grid[$xPosition][$yPosition] = true;
     }
 
     /**
@@ -115,33 +115,33 @@ class Grid
             $minY = 1;
         }
 
-        $x = rand(1, $minX);
-        $y = rand(1, $minY);
+        $xPosition = rand(1, $minX);
+        $yPosition = rand(1, $minY);
 
-        return array("x" => $x, "y" => $y);
+        return ["x" => $xPosition, "y" => $yPosition];
     }
 
 
     /**
-     * @param integer $x
-     * @param integer $y
+     * @param integer $xPosition
+     * @param integer $yPosition
      * @return boolean
      */
-    public function isAlive(int $x, int $y) : bool
+    public function isAlive(int $xPosition, int $yPosition) : bool
     {
-        if ($x < 0) {
+        if ($xPosition < 0) {
             return false;
         }
-        if ($y < 0) {
+        if ($yPosition < 0) {
             return false;
         }
-        if ($x >= $this->width) {
+        if ($xPosition >= $this->width) {
             return false;
         }
-        if ($y >= $this->height) {
+        if ($yPosition >= $this->height) {
             return false;
         }
-        return $this->grid[$x][$y];
+        return $this->grid[$xPosition][$yPosition];
     }
 
     /**
