@@ -3,6 +3,7 @@
 
 declare(ticks = 1);
 namespace GameOfLife;
+
 require_once sprintf(
     '%s%2$s..%2$svendor%2$sautoload.php',
     __DIR__,

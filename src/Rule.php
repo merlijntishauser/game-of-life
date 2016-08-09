@@ -13,12 +13,17 @@ class Rule
      * @var integer
      */
     private $amountOfLivingNeighbours;
-    
-    
-    public function __construct($isAlive, $amountOfLivingNeighbours)
+
+    /**
+     * Rule constructor.
+     *
+     * @param $isAlive
+     * @param $livingNeighbours
+     */
+    public function __construct(bool $isAlive, int $livingNeighbours)
     {
         $this->setIsAlive($isAlive);
-        $this->setAmountOfLivingNeighbours($amountOfLivingNeighbours);
+        $this->setAmountOfLivingNeighbours($livingNeighbours);
     }
 
     /**
@@ -46,11 +51,11 @@ class Rule
     }
 
     /**
-     * @param int $amountOfLivingNeighbours
+     * @param int $livingNeighbours
      */
-    public function setAmountOfLivingNeighbours(int $amountOfLivingNeighbours)
+    public function setAmountOfLivingNeighbours(int $livingNeighbours)
     {
-        $this->amountOfLivingNeighbours = $amountOfLivingNeighbours;
+        $this->amountOfLivingNeighbours = $livingNeighbours;
     }
     
     /**

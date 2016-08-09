@@ -1,0 +1,5 @@
+default:
+  suites:
+    cli_features:
+      paths:      [ %paths.base%/tests/acceptance ]
+      contexts:   [ CliContext ]
